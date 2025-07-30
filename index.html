@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAKAMU OKINYI | portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideIn {
+from { transform: translateX(-100%); }
+to { transform: translateX(0); }
+}
+body {
+font-family: 'Helvetica Neue', sans-serif;
+background-color: #000000;
+color: #ffffff;
+cursor: none;
+}
+.animate-fade-in {
+animation: fadeIn 0.8s ease-out forwards;
+}
+.animate-slide-in {
+animation: slideIn 1s ease-out forwards;
+}
+.hover-lift {
+transition: transform 0.3s ease;
+}
+.hover-lift:hover {
+transform: translateY(-10px);
+}
+</style>
+<script>
+tailwind.config={
+theme:{
+extend:{
+colors:{
+primary:'#000000',
+secondary:'#ffffff'
+},
+borderRadius:{
+'none':'0px',
+'sm':'4px',
+DEFAULT:'8px',
+'md':'12px',
+'lg':'16px',
+'xl':'20px',
+'2xl':'24px',
+'3xl':'32px',
+'full':'9999px',
+'button':'8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Helvetica Neue', sans-serif;
+background-color: #000000;
+color: #ffffff;
+cursor: none;
+}
+.custom-cursor {
+width: 20px;
+height: 20px;
+border: 2px solid #ffffff;
+border-radius: 50%;
+position: fixed;
+pointer-events: none;
+transform: translate(-50%, -50%);
+z-index: 9999;
+transition: transform 0.1s ease;
+mix-blend-mode: difference;
+}
+.custom-cursor.hover {
+transform: translate(-50%, -50%) scale(2);
+}
+.custom-cursor {
+width: 20px;
+height: 20px;
+border: 2px solid #ffffff;
+border-radius: 50%;
+position: fixed;
+pointer-events: none;
+transform: translate(-50%, -50%);
+z-index: 9999;
+transition: transform 0.1s ease;
+mix-blend-mode: difference;
+}
+.portfolio-item:hover img {
+transform: scale(1.05);
+filter: grayscale(0%);
+}
+.portfolio-item img {
+transition: all 0.5s ease;
+filter: grayscale(100%);
+}
+.service-card:hover .service-details {
+opacity: 1;
+transform: translateY(0);
+}
+.service-details {
+opacity: 0;
+transform: translateY(10px);
+transition: all 0.3s ease;
+}
+.bts-image {
+transition: all 0.3s ease;
+}
+.bts-item:hover .bts-caption {
+opacity: 1;
+}
+.bts-caption {
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+input, textarea {
+background-color: transparent;
+border: 1px solid rgba(255, 255, 255, 0.2);
+color: #ffffff;
+transition: all 0.3s ease;
+}
+input:focus, textarea:focus {
+border-color: #ffffff;
+outline: none;
+}
+.nav-link {
+position: relative;
+}
+.nav-link::after {
+content: '';
+position: absolute;
+width: 0;
+height: 1px;
+bottom: -2px;
+left: 0;
+background-color: #ffffff;
+transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+width: 100%;
+}
+.horizontal-scroll {
+overflow-x: auto;
+scrollbar-width: none;
+-ms-overflow-style: none;
+}
+.horizontal-scroll::-webkit-scrollbar {
+display: none;
+}
+.timeline-dot {
+transition: transform 0.3s ease;
+}
+.timeline-dot:hover {
+transform: scale(1.5);
+}
+</style>
+</head>
+<body>
+<!-- Header Section -->
+<header class="fixed top-0 left-0 w-full z-50 mix-blend-difference">
+<div class="container mx-auto px-6 py-8 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="text-2xl font-['Pacifico']">MAKAMU</span>
+</div>
+<nav class="hidden md:flex items-center gap-12">
+<a href="#work" class="nav-link text-white flex flex-col items-center gap-1">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-image-line"></i>
+</div>
+<span class="text-xs">Portfolio</span>
+</a>
+<a href="#about" class="nav-link text-white flex flex-col items-center gap-1">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-user-line"></i>
+</div>
+<span class="text-xs">About</span>
+</a>
+<a href="#contact" class="nav-link text-white flex flex-col items-center gap-1">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-mail-line"></i>
+</div>
+<span class="text-xs">Contact</span>
+</a>
+</nav>
+<button class="md:hidden w-10 h-10 flex items-center justify-center">
+<i class="ri-menu-line ri-2x"></i>
+</button>
+</div>
+</header>
+<!-- Mobile Menu -->
+<div class="fixed inset-0 bg-black z-50 transform translate-x-full transition-transform duration-300 ease-in-out" id="mobile-menu">
+<div class="flex justify-end p-6">
+<button class="w-10 h-10 flex items-center justify-center text-white" id="close-menu">
+<i class="ri-close-line ri-2x"></i>
+</button>
+</div>
+<div class="flex flex-col items-center justify-center h-full space-y-8 -mt-20">
+<a href="#portfolio" class="text-white flex flex-col items-center gap-2 hover:text-gray-300 transition">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-folder-line ri-2x"></i>
+</div>
+<span class="text-lg">Work</span>
+</a>
+<a href="#about" class="text-white flex flex-col items-center gap-2 hover:text-gray-300 transition">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-information-line ri-2x"></i>
+</div>
+<span class="text-lg">About</span>
+</a>
+<a href="#contact" class="text-white flex flex-col items-center gap-2 hover:text-gray-300 transition">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-chat-1-line ri-2x"></i>
+</div>
+<span class="text-lg">Contact</span>
+</a>
+</div>
+</div>
+<!-- Hero Section -->
+<section class="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0 bg-black"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent z-10"></div>
+<div class="container relative z-20 px-6">
+<div class="max-w-[90%] mx-auto">
+<h1 class="animate-slide-in text-[12vw] font-bold leading-[0.9] mb-12 tracking-tighter">
+<span class="block opacity-60">Techie &</span>
+<span class="text-[20vw] block -mt-8 relative">
+<span class="absolute -inset-x-4 inset-y-0 bg-white mix-blend-difference"></span>
+Photographer
+</span>
+</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-24">
+<div class="space-y-12">
+<p class="text-2xl text-gray-300 max-w-xl">Blending technology and photography to create compelling visual stories and innovative digital solutions.</p>
+<div class="flex flex-wrap gap-6">
+<a href="#work" class="group inline-flex items-center gap-3 text-lg border border-white px-8 py-3 !rounded-button hover:bg-white hover:text-black transition-all whitespace-nowrap">
+View Portfolio
+<i class="ri-arrow-right-line transition-transform group-hover:translate-x-2"></i>
+</a>
+<a href="#contact" class="group inline-flex items-center gap-3 text-lg bg-white text-black px-8 py-3 !rounded-button hover:bg-opacity-90 transition-all whitespace-nowrap">
+Let's Talk
+<i class="ri-arrow-right-line transition-transform group-hover:translate-x-2"></i>
+</a>
+<a href="makamus cv.docx" download class="group inline-flex items-center gap-3 text-lg border border-white px-8 py-3 !rounded-button hover:bg-white hover:text-black transition-all whitespace-nowrap">
+Download CV
+<i class="ri-download-line transition-transform group-hover:translate-y-1"></i>
+</a>
+</div>
+</div>
+<div class="relative h-[60vh] overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=abstract%20minimalist%20black%20and%20white%20composition%20with%20dramatic%20lighting%20and%20shadows%2C%20artistic%2C%20modern%2C%20clean%20lines%2C%20high%20contrast%2C%20professional%20quality%2C%208K&width=800&height=1200&seq=34&orientation=portrait"
+class="w-full h-full object-cover" alt="Abstract Composition">
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-12 left-6 z-10">
+<div class="flex items-center gap-4">
+<div class="w-12 h-[1px] bg-white"></div>
+<div class="text-sm uppercase tracking-widest">Scroll</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section id="about" class="py-32 bg-black">
+  <div class="container mx-auto px-6">
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <h2 class="text-5xl font-bold mb-6 animate-slide-in">About Me</h2>
+      <p class="text-xl text-gray-300 mb-8 animate-fade-in">I'm passionate about blending technology and creativity. My expertise spans web development, design, and artificial intelligence, allowing me to build innovative solutions and compelling digital experiences.</p>
+    </div>
+    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+      <!-- Skills -->
+      <div>
+        <h3 class="text-2xl font-semibold mb-8 text-white">My Skills</h3>
+        <div class="space-y-8">
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-lg text-gray-200">HTML</span>
+              <span class="text-lg text-gray-400">95%</span>
+            </div>
+            <div class="w-full bg-gray-800 rounded-full h-4">
+              <div class="bg-white h-4 rounded-full" style="width: 95%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-lg text-gray-200">CSS</span>
+              <span class="text-lg text-gray-400">90%</span>
+            </div>
+            <div class="w-full bg-gray-800 rounded-full h-4">
+              <div class="bg-white h-4 rounded-full" style="width: 90%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-lg text-gray-200">Python</span>
+              <span class="text-lg text-gray-400">85%</span>
+            </div>
+            <div class="w-full bg-gray-800 rounded-full h-4">
+              <div class="bg-white h-4 rounded-full" style="width: 85%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-lg text-gray-200">Artificial Intelligence</span>
+              <span class="text-lg text-gray-400">80%</span>
+            </div>
+            <div class="w-full bg-gray-800 rounded-full h-4">
+              <div class="bg-white h-4 rounded-full" style="width: 80%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1">
+              <span class="text-lg text-gray-200">JavaScript</span>
+              <span class="text-lg text-gray-400">80%</span>
+            </div>
+            <div class="w-full bg-gray-800 rounded-full h-4">
+              <div class="bg-white h-4 rounded-full" style="width: 80%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Education -->
+      <div>
+        <h3 class="text-2xl font-semibold mb-8 text-white">Education</h3>
+        <div class="space-y-8">
+          <div class="bg-gray-900 rounded-lg p-6 shadow-lg">
+            <h4 class="text-lg font-bold text-white mb-2">Diploma in Electrical Engineering</h4>
+            <p class="text-gray-300 mb-1">Technical University of Kenya</p>
+            <p class="text-gray-400 text-sm">2024 - Current</p>
+          </div>
+          <div class="bg-gray-900 rounded-lg p-6 shadow-lg">
+            <h4 class="text-lg font-bold text-white mb-2">Software Development</h4>
+            <p class="text-gray-300 mb-1">Power Learn Project</p>
+            <p class="text-gray-400 text-sm">Ongoing</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Featured Work -->
+<section id="work" class="py-32">
+<div class="container mx-auto px-6">
+<div class="mb-24">
+<div class="flex items-end justify-between">
+<h2 class="text-[12vw] font-bold leading-none tracking-tighter animate-slide-in">Work</h2>
+<p class="text-xl text-gray-300 max-w-md pb-8 animate-fade-in">A curated selection of our most impactful visual narratives and creative collaborations.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-32 opacity-0 animate-fade-in" style="animation-delay: 0.3s;">
+<!-- Project 1 -->
+<div class="group">
+<a href="https://donotieno.pixieset.com/mandykosta/" class="block relative overflow-hidden aspect-[21/9] mb-8">
+<img src="DSC07656.JPG"
+class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Project 1">
+</a>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-4xl font-bold mb-3">MANDY COSTA</h3>
+<p class="text-xl text-gray-300">COSTA LOUNGE 2025</p>
+</div>
+<a href="https://donotieno.pixieset.com/mandykosta/" class="group inline-flex items-center gap-2 text-lg hover:text-gray-300 transition-colors">
+View Project
+<i class="ri-arrow-right-line transition-transform group-hover:translate-x-2"></i>
+</a>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="group">
+<a href="https://makamuokinyi.pixieset.com/yourthouhtsoraimo/" class="block relative overflow-hidden aspect-[21/9] mb-8">
+<img src="IMG_9432.jpg"
+class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Your Thoughts Project Cover">
+</a>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-4xl font-bold mb-3">your thoughts</h3>
+<p class="text-xl text-gray-300">commercial 2025</p>
+</div>
+<a href="https://makamuokinyi.pixieset.com/powerlearnprojectjkuat/" class="group inline-flex items-center gap-2 text-lg hover:text-gray-300 transition-colors">
+View Project
+<i class="ri-arrow-right-line transition-transform group-hover:translate-x-2"></i>
+</a>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="group">
+<a href="#" class="block relative overflow-hidden aspect-[21/9] mb-8">
+<img src="789.JPG"
+class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="PLP JKUAT 2025 Project Cover">
+</a>
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-4xl font-bold mb-3"></h3>
+<p class="text-xl text-gray-300">plp jkuat 2025 
+    
+</p>
+</div>
+<a href="#" class="group inline-flex items-center gap-2 text-lg hover:text-gray-300 transition-colors">
+View Project
+<i class="ri-arrow-right-line transition-transform group-hover:translate-x-2"></i>
+</a>
+</div>
+</div>
+</div></div>
+</section>
+<!-- Contact Section -->
+<section id="contact" class="py-24 bg-black">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+<div>
+<h2 class="text-4xl font-bold mb-6">Get In Touch</h2>
+<p class="text-xl text-gray-400 mb-8">Ready to bring your vision to life? Contact us to discuss your next project.</p>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label for="name" class="block text-sm font-medium mb-2">Name</label>
+<input type="text" id="name" class="w-full px-4 py-3 border-none !rounded-button bg-gray-900" placeholder="Your name">
+</div>
+<div>
+<label for="email" class="block text-sm font-medium mb-2">Email</label>
+<input type="email" id="email" class="w-full px-4 py-3 border-none !rounded-button bg-gray-900" placeholder="Your email">
+</div>
+</div>
+<div>
+<label for="subject" class="block text-sm font-medium mb-2">Subject</label>
+<input type="text" id="subject" class="w-full px-4 py-3 border-none !rounded-button bg-gray-900" placeholder="Subject">
+</div>
+<div>
+<label for="message" class="block text-sm font-medium mb-2">Message</label>
+<textarea id="message" rows="5" class="w-full px-4 py-3 border-none !rounded-button bg-gray-900" placeholder="Your message"></textarea>
+</div>
+<button type="submit" class="bg-white text-black px-8 py-3 font-medium hover:bg-opacity-90 transition !rounded-button whitespace-nowrap">
+Send Message
+</button>
+</form>
+</div>
+<div>
+<div>
+<h3 class="text-2xl font-bold mb-6">Connect With me</h3>
+
+<div class="space-y-4">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center mr-4">
+<i class="ri-mail-line ri-lg"></i>
+</div>
+<p>makamuokinyi@gmail.com</p>
+</div>
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center mr-4">
+<i class="ri-phone-line ri-lg"></i>
+</div>
+<p>+254 111 392 515</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-black py-16">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+<div>
+<div class="flex items-center gap-2 mb-6">
+
+<span class="text-2xl font-medium">MAKAMU</span>
+</div>
+<p class="text-gray-400 mb-6">AN ASPIRING MACHINE LEARNING ENGINEER.</p>
+
+<div>
+<h4 class="text-lg font-bold mb-6">Quick Links</h4>
+<ul class="space-y-3">
+<li><a href="#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
+<li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white transition">WORK</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-6">Contact</h4>
+<address class="not-italic text-gray-400 space-y-3">
+<p>MAKAMU OKINYI</p>
+<p>Nairobi, Kenya</p>
+<p>makamuokinyi@gmail.com</p>
+<p>+254 111 392 515</p>
+</address>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 MAKAMU OKINYI. All rights reserved.</p>
+<div class="flex space-x-6">
+<a href="#" class="text-gray-400 hover:text-white transition text-sm">Privacy Policy</a>
+<a href="#" class="text-gray-400 hover:text-white transition text-sm">Terms of Service</a>
+<a href="#" class="text-gray-400 hover:text-white transition text-sm">Cookie Policy</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Intersection Observer for fade-in animations
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.style.opacity = '1';
+}
+});
+}, { threshold: 0.1 });
+document.querySelectorAll('section').forEach(section => {
+section.style.opacity = '0';
+section.style.transition = 'opacity 0.8s ease-out';
+observer.observe(section);
+});
+// Custom cursor
+const cursor = document.querySelector('.custom-cursor');
+if (cursor) {
+document.addEventListener('mousemove', function(e) {
+cursor.style.left = e.clientX + 'px';
+cursor.style.top = e.clientY + 'px';
+});
+document.addEventListener('mousedown', function() {
+cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
+});
+document.addEventListener('mouseup', function() {
+cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+});
+}
+});
+document.addEventListener('DOMContentLoaded', function() {
+// Mobile menu toggle
+const menuButton = document.querySelector('button.md\\:hidden');
+const closeButton = document.getElementById('close-menu');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+if (menuButton && closeButton && mobileMenu) {
+menuButton.addEventListener('click', function() {
+mobileMenu.classList.remove('translate-x-full');
+});
+closeButton.addEventListener('click', function() {
+mobileMenu.classList.add('translate-x-full');
+});
+mobileMenuLinks.forEach(link => {
+link.addEventListener('click', function() {
+mobileMenu.classList.add('translate-x-full');
+});
+});
+}
+});
+document.addEventListener('DOMContentLoaded', function() {
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+if (targetId === '#') return;
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+window.scrollTo({
+top: targetElement.offsetTop - 80,
+behavior: 'smooth'
+});
+}
+});
+});
+});
+document.addEventListener('DOMContentLoaded', function() {
+// Timeline dots hover effect
+const timelineDots = document.querySelectorAll('.timeline-dot');
+timelineDots.forEach(dot => {
+dot.addEventListener('mouseenter', function() {
+this.classList.add('scale-125');
+});
+dot.addEventListener('mouseleave', function() {
+this.classList.remove('scale-125');
+});
+});
+});
+</script>
+</body>
+</html>
